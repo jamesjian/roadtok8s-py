@@ -7,7 +7,7 @@ def read_index():
 	"""
 	Return a  Python Dictionary that supports JSON serialization.
 	"""
-	return {"Hello":"World"}
+	return {"Hello":"World 04/03"}
 
 
 @app.get("/api/v1/hello-world")
