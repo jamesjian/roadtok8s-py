@@ -1,0 +1,23 @@
+name: Install NGINX
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: configure the SSH Private Key Secret
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chomod 600 ~/.ssh/id_rsa
+      - name: Set Strict Host key Checking
+        run: echo "StrictHostkeyChecking=no" > ~/.ssh/config
+      - name: Install NGINX
+        run: |
+          export MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"
+          ssh root@MY_HOST sudo apt updaate
+          ssh root@MY_HOST sudo apt install nginx -y
+
