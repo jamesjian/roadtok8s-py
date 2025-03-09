@@ -17,7 +17,7 @@ jobs:
         run: echo "StrictHostkeyChecking=no" > ~/.ssh/config
       - name: Install NGINX
         run: |
-          echo "MY_HOST=${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}" >> $GITHUB_ENV
-          ssh root@MY_HOST sudo apt updaate
-          ssh root@MY_HOST sudo apt install nginx -y
+          export MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}" 
+          ssh root@$MY_HOST sudo apt updaate
+          ssh root@$MY_HOST sudo apt install nginx -y
 
