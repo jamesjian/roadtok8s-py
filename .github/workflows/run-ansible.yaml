@@ -23,7 +23,7 @@ jobs:
     - name: Ansible Inventory File for Remote host
       run: |
         mkdir -p ./devops/ansible/
-        export INVENTORY_FILE=./inventory.ini
+        export INVENTORY_FILE=./devops/ansible/inventory.ini
         echo "[my_host_group]" > $INVENTORY_FILE
         echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}" >> $INVENTORY_FILE
     - name: Ansible Default configuration File
