@@ -34,7 +34,7 @@ jobs:
         ansible_python_interpreter = '/usr/bin/python3'
         ansible_ssh_private_key_file = ~/.ssh/id_rsa
         remote_user = root
-        inventory = ./inventory.ini
+        inventory = ./devops/ansible/inventory.ini
         host_key_checking = False
         EOF
     - name: Ping Ansible Hosts
