@@ -37,6 +37,17 @@ jobs:
         inventory = ./devops/ansible/inventory.ini
         host_key_checking = False
         EOF
+    - name: Debug IP Address Secret
+      run: echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"    
+    - name: Verify inventory.ini File
+      run: |
+        ls -l ./devops/ansible/inventory.ini
+        cat ./devops/ansible/inventory.ini
+
+    - name: Verify ansible.cfg File
+      run: |
+        ls -l ./devops/ansible/ansible.cfg
+        cat ./devops/ansible/ansible.cfg
     - name: Ping Ansible Hosts
       working-directory: ./devops/ansible/
       run: |
